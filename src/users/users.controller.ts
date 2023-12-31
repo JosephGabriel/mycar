@@ -12,7 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
-import { UserDto } from 'src/users/dtos/user.dto';
+import { UserDto } from './dtos/user.dto';
 
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -20,13 +20,13 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 import { AuthService } from './auth.service';
 
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { Serialize } from '../interceptors/serialize.interceptor';
 
 import { CurrentUser } from './decorators/current-user.decorator';
 
 import { User } from './users.entity';
 
-import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -82,7 +82,7 @@ export class UsersController {
   }
 
   @Get('/:id')
-  findAll(@Query('email') email: string) {
+  findAllUsers(@Query('email') email: string) {
     return this.userService.find(email);
   }
 
