@@ -8,6 +8,9 @@ export class Report {
   @Column()
   price: number;
 
+  @Column({ default: true })
+  approved: boolean;
+
   @Column()
   make: string;
 
